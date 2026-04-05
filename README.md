@@ -3,6 +3,32 @@
 
 ## Setup
 
+创建虚拟环境
+
+```bash
+python -m venv venv
+```
+
+**激活 venv**
+
+CMD：
+
+```bash
+.venv\Scripts\activate
+```
+
+
+Mac / Linux
+
+```bash
+source .venv/bin/activate
+```
+
+
+**安装依赖**
+
+
+
 ```bash
 pip install -r requirements.txt
 ```
