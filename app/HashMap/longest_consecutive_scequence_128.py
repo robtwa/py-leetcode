@@ -32,15 +32,17 @@ from typing import List
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
         """
-        This algorithm finds the length of the longest consecutive sequence in an unsorted array.
-        The sequence does not need to be contiguous in the original array.
-        It uses a hash set for O(1) lookups and only expands sequences starting from valid
-        sequence "starting points", achieving O(n) time complexity.
+        This algorithm finds the length of the longest consecutive sequence in
+        an unsorted array. The sequence does not need to be contiguous in the
+        original array. It uses a hash set for O(1) lookups and only expands
+        sequences starting from valid sequence "starting points", achieving O
+        (n) time complexity.
 
-        The algorithm checks whether current_num - 1 exists in the set. If it does not, then current_num is the starting
-        point of a sequence. It then continues to check current_num + 1, current_num + 2, and so on, until the sequence
-        no longer exists. During this process, it calculates the length of the sequence and updates the maximum length
-        found.
+        The algorithm checks whether current_num - 1 exists in the set. If it
+        does not, then current_num is the starting point of a sequence. It then
+        continues to check current_num + 1, current_num + 2, and so on, until
+        the sequence no longer exists. During this process, it calculates the
+        length of the sequence and updates the maximum length found.
         """
         if not nums:
             return 0 # Returns 0 if nums is
@@ -48,21 +50,18 @@ class Solution:
         longest = 1 # Set default longest
         num_set = set(nums) # Create a set from the input list to allow for O(1) lookups
 
-        print("num_set: ", num_set)
-
         for num in nums: # Iterate through each number in the input list
-            # If num-1 is not in the set, then num is the start of a sequence
-            if num - 1 not in num_set:
-                # Initialize current number and current streak length
+            if num - 1 not in num_set: # If num-1 is not in the set,
+                # then num is the start of a sequence
                 current_num = num
                 current_streak = 1
 
+                # Keep extending the sequence as long as the next number exists in the set
                 while current_num + 1 in num_set:
-                    # Keep extending the sequence as long as the next number exists in the set
                     current_num += 1
                     current_streak += 1
 
-                longest = max(longest, current_streak)
+                longest = max(longest, current_streak) # Update longest
 
         return longest
 
