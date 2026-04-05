@@ -34,6 +34,11 @@ class Solution:
         without repeating characters using a sliding window approach.
         It maintains a window with two pointers (left and right) and
         a set to track unique characters in the current window.
+
+        O(n) time complexity, where n is the length of the input string s,
+        because each character is visited at most twice (once by the right
+        pointer and once by the left pointer).
+
         """
 
         if not s:
