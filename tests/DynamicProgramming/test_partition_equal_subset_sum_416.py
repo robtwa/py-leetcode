@@ -16,6 +16,3 @@ def test_3():
 def test_4():
     assert solver.canPartition([1,2,3]) == True
 
-def test_5():
-    assert solver.canPartition([1,2,3]) == True
-

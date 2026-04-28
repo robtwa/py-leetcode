@@ -47,11 +47,11 @@ class Solution:
         dp[0] = True
 
         for num in nums:
+            print("-----")
             for j in range(target, num - 1, -1):
                 # if we can make the sum j by including num (j = x + num),
                 # then we can also make the sum j by excluding num (x = j - num)
                 dp[j] = dp[j] or dp[j - num]
-
                 print(f"target:{target}, num: {num}, j: {j}, dp[{j}]: {dp[j]}, dp[{j - num}]: {dp[j - num]}")
 
         return dp[target]
