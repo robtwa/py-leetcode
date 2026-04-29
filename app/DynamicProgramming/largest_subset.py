@@ -32,11 +32,13 @@ Output: 3
 
 
 """
-import bisect
 from typing import List
 
 class Solution:
-
+    """
+    this solution uses sorting and binary search to efficiently count overlaps for each event.
+    Time complexity: O(n log n) due to sorting and binary search
+    """
     def getSubsetLength(self, start: List[int], finish: List[int]) -> int:
         starts = sorted(start)
         ends = sorted(finish)
@@ -44,21 +46,45 @@ class Solution:
         res = 0
         for s, f in zip(start, finish):
             # number of events that have finished before this event starts
-            events_end_before_this = bisect.bisect_left(ends, s)
+            events_end_before_this = self.left_bound(ends, s)
 
             # number of events that have started before this event finishes
-            events_start_before_this = bisect.bisect_right(starts, f)
+            events_start_before_this = self.right_bound(starts, f)
 
             # overlap = number of events that have started before this event finishes
             #           - number of events that have finished before this event starts
             overlap = events_start_before_this - events_end_before_this
 
-            print(f"[s:{s}, f:{f}] -> {events_start_before_this} - {events_start_before_this} = {overlap}")
+            print(f"[s:{s}, f:{f}] -> {events_start_before_this} - {events_end_before_this} = {overlap}")
             res = max(res, overlap)
 
         print(f"res = {res}")
         return res
+    
+    def left_bound(self, l: List[int], x: int):
+        """
+        find the first index that element ≥ x
+        """
+        n = len(l)
+        for i in range(n):
+            if l[i] > x or l[i] == x :
+                return i
+        return 0
 
+    def right_bound(self, l: List[int], x: int):
+        """
+        find the first index that element > x
+        """
+        n = len(l)
+        for i in range(n):
+            if l[i] > x:
+                return i
+        return n
+
+    """
+    this is a brute-force solution, which checks each event against all other events to count overlaps.
+    Time complexity: O(n^2)
+    """
     def getSubsetLength2(self, start: List[int], finish: List[int]) -> int:
         n = len(start)
         res = 0
