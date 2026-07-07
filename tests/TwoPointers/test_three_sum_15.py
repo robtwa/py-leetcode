@@ -13,3 +13,8 @@ def test_02():
 def test_03():
     assert solver.threeSum([0,0,0]) == [[0,0,0]]
 
+def test_04():
+    assert solver.threeSum([0,0,0,0]) == [[0,0,0]]
+
+def test_05():
+    assert solver.threeSum([-2,0,0,2,2]) == [[-2,0,2]]

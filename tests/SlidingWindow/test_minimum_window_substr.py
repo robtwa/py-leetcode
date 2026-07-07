@@ -21,3 +21,9 @@ def test_05():
 
 def test_06():
     assert solver.minWindow("abbdcba", "bbc") == "bbdc"
+
+def test_07():
+    assert solver.minWindow("aa", "aa") == "aa"
+
+def test_08():
+    assert solver.minWindow("abaacbba", "aabc") == "baac"

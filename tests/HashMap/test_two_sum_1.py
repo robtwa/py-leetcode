@@ -13,4 +13,9 @@ def test_02():
 def test_03():
     assert solver.twoSum([3,3], 6) == [0,1]
 
+def test_04():
+    assert solver.twoSum([0,4,3,0], 0) == [0,3]
+
+def test_05():
+    assert solver.twoSum([-1,-2,-3,-4,-5], -8) == [2,4]
 

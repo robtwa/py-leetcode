@@ -10,4 +10,12 @@ def test_01():
 def test_02():
     assert solver.search([4,5,6,7,0,1,2], 3) == -1
 
+def test_03():
+    assert solver.search([1], 0) == -1
+
+def test_04():
+    assert solver.search([1], 1) == 0
+
+def test_05():
+    assert solver.search([3,1], 1) == 1
 

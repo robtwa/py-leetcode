@@ -9,3 +9,8 @@ def test_01():
 
 def test_02():
     assert solver.maxArea([1,1]) == 1
+
+def test_03():
+    assert solver.maxArea([1,2,3,1,2]) == 6
+
+

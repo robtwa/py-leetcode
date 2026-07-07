@@ -99,7 +99,7 @@ class LRUCache:
     ############################################################################
     # Helper functions
     ############################################################################
-
+    # add to the front of the list
     def _add_node(self, node):
         node.prev = self.head
         node.next = self.head.next

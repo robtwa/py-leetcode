@@ -38,12 +38,22 @@ grid[i][j] is '0' or '1'.
 from typing import List
 
 class Solution:
-    # This function counts the number of islands in a 2D grid.
-    # '1' represents land and '0' represents water.
-    # It uses BFS (Breadth-First Search):
-    # Whenever a '1' is found, BFS is triggered to mark all connected land
-    # (up, down, left, right) as '0' (visited).
-    # Each BFS call represents discovering one island.
+    """
+    I solve this problem using BFS.
+
+    The key idea is that whenever I find a '1', it means I discovered a new island.
+    I then use BFS to visit all connected land cells and mark them as '0' so they are not counted again.
+
+    First, I iterate through the entire grid.
+    Whenever I encounter a '1', I increment the island count and start a BFS from that position.
+
+    Inside BFS, I use a queue to process cells level by level.
+    For each cell, I check whether it is within bounds and still land.
+    If so, I mark it as visited by changing it to '0', then add its four neighboring cells — up, down, left, and right
+    — into the queue.
+
+    This BFS traversal explores the entire connected component, so each BFS call represents one island.
+    """
     def numIslands(self, grid: List[List[str]]) -> int:
         if not grid:
             return 0

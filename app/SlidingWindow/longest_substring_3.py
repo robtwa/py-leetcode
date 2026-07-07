@@ -30,17 +30,20 @@ class Solution:
 
     def lengthOfLongestSubstring(self, s: str) -> int:
         """
-        This function calculates the length of the longest substring
-        without repeating characters using a sliding window approach.
+        I solve this problem using the sliding window technique.
 
-        It maintains a window with two pointers (left and right) and
-        a set to track unique characters in the current window.
+        The window range is [left, right), and I use a set called char_set to keep track of characters currently inside
+        the window so that all characters remain unique.
 
-        It keeps expanding the right pointer to include new characters until a duplicate is found. When a duplicate is found, it moves the left pointer to shrink the window until the duplicate is removed.
+        If s[right] is not in the set, the current window is still valid. I add the character to the set, move the right
+        pointer forward, and update the maximum length.
 
-        The maximum length of the window during this process is the length of the longest substring without repeating characters.
+        If s[right] already exists in the set, it means the window contains duplicates. I then shrink the window from
+        the left side by removing characters from the set and moving the left pointer until the window becomes valid
+        again.
 
-        O(n) time complexity, where n is the length of the input string s because each character is visited at most twice (once by the right pointer and once by the left pointer).
+        Since each character is added and removed at most once, the overall time complexity is:
+        O(n)
         """
 
         n = len(s)
