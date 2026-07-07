@@ -30,6 +30,22 @@ Constraints:
 from typing import List
 
 class Solution:
+    """
+    I solve this problem using prefix sum and a hashmap.
+
+    `prefix_sum` represents the cumulative sum from the beginning of the array to the current position,
+    and `freq_map` stores how many times each prefix sum has appeared.
+
+    The key insight is that if the current prefix sum is prefix_sum, and a previous prefix sum equals:
+    `prefix_sum − k`
+    then the subarray between those two positions has a sum of k.
+
+    While iterating through the array, I continuously update the running prefix sum and check whether prefix_sum-k
+    already exists in the hashmap.
+    If it does, I add its frequency to the result because it means valid subarrays have been found.
+
+    Finally, I store the current prefix sum in the hashmap for future iterations.
+    """
     def subarraySum(self, nums: List[int], k: int) -> int:
         # Initialize hash map to store prefix sum frequencies
         # Start with {0: 1} to handle subarrays starting from index 0
