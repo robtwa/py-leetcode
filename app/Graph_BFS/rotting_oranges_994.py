@@ -36,7 +36,7 @@ Explanation: Since there are already no fresh oranges at minute 0, the answer is
 
 
 Constraints:
-.m == grid.length
+m == grid.length
 n == grid[i].length
 1 <= m, n <= 10
 grid[i][j] is 0, 1, or 2.
@@ -63,6 +63,7 @@ class Solution:
                     # If the cell contains a fresh orange, increment the fresh_count
                     fresh_count += 1
 
+        # Infect the adjacent fresh oranges using BFS **************************
         # While there are rotten oranges to process and there are still fresh oranges
         while queue and fresh_count > 0:
             minutes_passed += 1 # Increment the minutes passed for each level of BFS

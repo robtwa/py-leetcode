@@ -1,6 +1,6 @@
 import pytest
 
-from app.Graph_BFS.rotting_rranges_994 import Solution
+from app.Graph_BFS.rotting_oranges_994 import Solution
 
 solver = Solution()
 
