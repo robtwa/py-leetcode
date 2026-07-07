@@ -26,28 +26,35 @@ Output: 0
 
 Constraints:
 1 <= coins.length <= 12
-1 <= coins[i] <= 231 - 1
-0 <= amount <= 104
+1 <= coins[i] <= 2^31 - 1
+0 <= amount <= 10^4
 """
 
 from typing import List
 
 class Solution:
+    """
+    I use dynamic programming where dp[i] represents the minimum number of coins needed to make amount i.
+    For each coin, I iterate from the coin value up to the target amount.
+    If I can make `i - coin`, then I can make i by adding one more current coin.
+    So the transition becomes: dp[i] = min(dp[i], dp[i - coin] + 1)
+    Finally, if dp[amount] is still infinity, it means the target amount cannot be formed.
+    """
     def coinChange(self, coins: List[int], amount: int) -> int:
         dp = [float('inf')] * (amount + 1)
         dp[0] = 0
 
         for coin in coins:
-            print("\ncoin:", coin)
+            # print("\ncoin:", coin)
             # "i" represents the coin denomination from the current coin to the target amount.
             for i in range(coin, amount + 1):
-                print(f"{i}, dp[{i}]={dp[i]}, "
-                      f"dp[i-coin]+1=dp[{i}-{coin}]+1=dp[{i-coin}]+1={dp[i-coin]}+1={dp[i-coin]+1}")
+                # print(f"{i}, dp[{i}]={dp[i]}, "
+                #       f"dp[i-coin]+1=dp[{i}-{coin}]+1=dp[{i-coin}]+1={dp[i-coin]}+1={dp[i-coin]+1}")
                 # "dp[i - coin] + 1" represents the total number of coins
                 # needed to make up the amount 'i' using the current coin at 
                 # "dp[i - coin]"
                 dp[i] = min(dp[i], dp[i - coin] + 1)
-                print(f"dp[{i}] = {dp[i]}")
+                # print(f"dp[{i}] = {dp[i]}")
 
         return dp[amount] if dp[amount] != float('inf') else -1
 
