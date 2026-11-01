@@ -1,55 +1,62 @@
-"""
-# My Python Project
+# Practice LeetCode problems in Python
 
 ## Setup
 
-创建虚拟环境
+### 1. Create a Virtual Environment
 
 ```bash
-python -m venv venv
+python -m venv .venv
 ```
 
-**激活 venv**
+### 2. Activate the Virtual Environment
 
-CMD：
-
-```bash
-.venv\Scripts\activate
-```
-
-
-Mac / Linux
+**macOS / Linux:**
 
 ```bash
 source .venv/bin/activate
 ```
 
+**Windows (CMD):**
 
-**安装依赖**
+```cmd
+.venv\Scripts\activate
+```
 
+**Windows (PowerShell):**
 
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+### 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## 创建一个“软链接”（editable install）
+### 4. Install the Project in Editable Mode
 
-installs the project in editable mode by creating a link in site-packages instead of copying files, so changes to the source code take effect immediately without reinstalling.
-
-它不是“安装代码”，而是“把你的项目路径加入 Python 环境”
+Install the project in editable mode:
 
 ```bash
 pip install -e .
 ```
 
+Editable installation creates a link to your project source directory in the Python environment instead of copying the source files.
+
+This means changes to your source code take effect immediately without reinstalling the project.
+
+In other words, Python can import your project directly from its source directory.
+
 ## Run Tests
+
+Run all tests using pytest:
 
 ```bash
 pytest
 ```
 
 ## Features
+
 - Basic calculator functions
 - Unit tests using pytest
-"""
